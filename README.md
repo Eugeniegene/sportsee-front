@@ -4,7 +4,7 @@ Projet 12 - Développez un tableau de bord d'analytics avec React
 
 ## Technologies used
 
-- ![React v.18]React v.18
+- React v.18
 - React Router
 - CSS 3 
 

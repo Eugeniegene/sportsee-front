@@ -4,7 +4,7 @@ Projet 12 - Développez un tableau de bord d'analytics avec React
 
 ## Technologies used
 
-- React v.18
+- ![React v.18]React v.18
 - React Router
 - CSS 3 
 
@@ -12,8 +12,8 @@ Projet 12 - Développez un tableau de bord d'analytics avec React
 
 ### Prequisites 
 
-- npm 
-- NoneJs
+- npm 8.19.2
+- NoneJs 18.11.0
 - Code editor
 
 ### Installing and lauching Back-End files 

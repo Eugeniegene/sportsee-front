@@ -1,0 +1,19 @@
+.WelcomePage 
+{
+    position: absolute;
+    margin-left: 250px;
+    margin-top: 50px;
+    font-family: Roboto;
+}
+
+.greeting h1
+{
+    font-size: 48px;
+    margin-bottom: 20px;
+    font-size: 400;
+}
+
+.greeting h1 .nom
+{
+    color: red;
+}

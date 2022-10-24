@@ -1,0 +1,28 @@
+.sideFooter
+{
+    width: 117px;
+    background-color: black;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    height: 800px;
+    position: absolute;
+    padding-top: 15%;
+}
+
+.sideFooterIcon
+{
+    margin-bottom: 20px;
+}
+
+.Disclaimer
+{
+    color: white;
+    writing-mode: vertical-lr;
+    text-align: center;
+    transform: rotate(180deg);
+    margin-left: 45px;
+    margin-top: 220px;
+    font-size: 12px;
+    font-weight: 500;
+}

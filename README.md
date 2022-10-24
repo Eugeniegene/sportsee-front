@@ -4,7 +4,7 @@ Projet 12 - Développez un tableau de bord d'analytics avec React
 
 ## Technologies used
 
-- React
+- React v.18
 - React Router
 - CSS 3 
 
@@ -19,17 +19,17 @@ Projet 12 - Développez un tableau de bord d'analytics avec React
 ### Installing and lauching Back-End files 
 
 Clone the repository of SportSee Back-End:
-
+```bash
 git clone https://github.com/Eugeniegene/sportSee-backend-P12.git
-
+``` 
 When opening the back-end repository :
-
+```bash
 npm install
-
+```
 Launch back-end on port 3000 :
-
+```bash
 npm run start
-
+```
 ## Available Endpoints
 
 This project contains four endpoints available for you to use.
@@ -46,17 +46,18 @@ Examples of queries that are available to use with these two id numbers :
 - http://localhost:3000/user/12/performance - Retrieves the performance of the user with id 12
 - http://localhost:3000/user/18 - Retrieves user 18's main information.
 
-Installing and launching Front-end
+## Installing and launching Front-end
+
 Clone the repository of SportSee Front-End:
-
+```bash
 git clone https://github.com/Eugeniegene/sportsee-front.git
-
+```
 Then, inside the repository, install dependencies:
-
+```bash
 npm install
-
+```
 Launch Front-End on port 3001:
-
+```bash
 npm start
-
+```
 Front-End is now rendered at URL http://localhost:3001

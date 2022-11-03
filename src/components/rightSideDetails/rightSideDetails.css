@@ -3,7 +3,9 @@
     position: absolute;
     margin-top: 20px;
     font-family: Roboto;
-    left: 180%;
+    left: 120%;
+    right: 0%;
+    top: 25%;
 }
 .sideStats
 {

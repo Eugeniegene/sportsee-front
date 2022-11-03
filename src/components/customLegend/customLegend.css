@@ -1,0 +1,15 @@
+.custom-legend-score .custom-legend-score-data
+{
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 23px;
+}
+
+.custom-legend-score .custom-legend-score-objective
+{
+    font-weight: 500;
+    font-size: 13px;
+    color: #74798C;
+    width: 50%;
+    margin-left: 25%;
+}

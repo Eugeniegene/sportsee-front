@@ -1,0 +1,33 @@
+.userScoreChart {
+    background-color: #FBFBFB;
+    border-radius: 5px;
+}
+
+.userScoreChart .userTitle
+{
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 15px;
+    margin-top: 20px;
+    position: absolute;
+    margin-left: 10px;
+}
+
+.userScoreChart .recharts-legend-wrapper{
+        position: absolute;
+        z-index: 0;
+        text-align: center;
+        top:20%;
+        right: 16%;
+        bottom: 22%!important;
+        left: 25%!important;
+        width: 100px!important;
+        height: 100px!important;
+        border: none;
+        border-radius: 50%;
+        line-height: 18px;
+        background-color: white;
+        padding: 15px;
+      }
+
+

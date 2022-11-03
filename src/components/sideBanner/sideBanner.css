@@ -5,9 +5,10 @@
     align-items: center;
     text-align: center;
     justify-content: center;
-    height: 800px;
+    height: auto;
     position: absolute;
     padding-top: 15%;
+    overflow: hidden;
 }
 
 .sideFooterIcon
@@ -22,7 +23,8 @@
     text-align: center;
     transform: rotate(180deg);
     margin-left: 45px;
-    margin-top: 220px;
+    margin-top: 125px;
     font-size: 12px;
     font-weight: 500;
+    padding-top: 25px;
 }

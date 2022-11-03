@@ -1,0 +1,28 @@
+
+.DailyChart-container {
+    background-color: #FBFBFB;
+    padding: 20px;
+}
+
+.DailyChart-container .chart-title{
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 15px;
+    padding-top: 20px;
+    position: absolute;
+}
+
+.DailyChart-container .userDataChart{
+    display: flex;
+    justify-content: flex-end;
+    gap: 30px;
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 15px;
+    padding-top: 20px;
+    margin-bottom: 50px;
+    margin-right: 35px;
+}
+.DailyChart-container .recharts-responsive-container .recharts-wrapper {
+    min-width: 835px;
+}

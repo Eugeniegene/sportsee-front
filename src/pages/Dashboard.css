@@ -1,11 +1,15 @@
 .WelcomePage 
 {
     position: absolute;
-    margin-left: 250px;
-    margin-top: 50px;
+    margin-left: 230px;
+    margin-top: 15px;
     font-family: Roboto;
 }
 
+.greeting
+{
+    margin-bottom: 35px;
+}
 .greeting h1
 {
     font-size: 48px;
@@ -16,4 +20,18 @@
 .greeting h1 .nom
 {
     color: red;
+}
+
+.three_charts_block
+{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+.sessionStatsDuration,
+.performanceRadar,
+.userScoreChart {
+  width: 258px;
+  height: 258px;
 }

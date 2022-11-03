@@ -1,34 +1,48 @@
 import React from "react"
-import { useParams } from "react-router";
+import { useState, useEffect } from 'react'
 
 import CaloriesIcon from "../assets/calories-icon.png"
 import CarbsIcon from "../assets/carbs-icon.png"
 import ProteinIcon from "../assets/protein-icon.png"
 import LipidIcon from "../assets/lipid-icon.png"
 
-import DailyChart from "../components/dailyChart/dailyChart"
+import DailyChart from "../components/dailyChart/dailyChart.js"
 import RightStats from "../components/rightSideDetails/rightSideDetails.js"
 import SessionStats from "../components/sessionsDurationChart/sessionDurationChart.js"
+import PerformanceRadar from "../components/performanceValueRadar/performanceValueRadar.js"
+import UserScoreStats from "../components/scoreChart/scoreChart.js"
 
-import { APIMockKey, APIMockName } from "../Api-Data/userData-Api.js"
+import { fetchMainInformation, fetchMainUserInformation } from "../Api-Data/userData-Api.js"
 
 import "./Dashboard.css"
 
 const Dashboard = () => {
 
-    const apiMocked = new APIMockKey()
-    const apiMockedName = new APIMockName()
-
-    let { userId } = useParams()
-    userId = parseInt(userId)
+    const [mainInformation, setMainInformation] = useState([])
+    const [mainUserinformation, setmainUserInformation] = useState([])
+    let isConnected = false
   
-    const userData = apiMocked.fetchKeyDataId(userId)
-    const userName = apiMockedName.fetchNameId(userId)
+    useEffect(() => {
+        fetchUserData()
+    }, [isConnected])
+  
+    async function fetchUserData () {
+      const neededData = await fetchMainInformation()
+      setMainInformation(neededData)
+      const userData = await fetchMainUserInformation()
+      setmainUserInformation(userData)
+    }
+  
+    if (mainUserinformation?.firstName !== undefined) {
+        isConnected = true
+    } else {
+        isConnected = false
+    }
 
     return (
         <div className="WelcomePage">
             <div className="greeting">
-                <h1>Bonjour <span className='nom'> {userName} </span></h1>
+                <h1>Bonjour <span className='nom'> {mainUserinformation?.firstName}</span></h1>
                 <span>Félicitations ! Vous avez explosé vos objectifs hier 👏</span>
             </div>
             <div className="daily_stats_chart">
@@ -36,14 +50,14 @@ const Dashboard = () => {
             </div>
             <div className="three_charts_block">
                 <SessionStats />
-                Value chart 
-                Score chart
+                <PerformanceRadar />
+                <UserScoreStats />
             </div>
             <div className="rightUserStats">
-                <RightStats icon={CaloriesIcon} grData={userData?.calorieCount} type='Calories' />
-                <RightStats icon={CarbsIcon} grData={userData?.proteinCount} type='Proteines' />
-                <RightStats icon={ProteinIcon} grData={userData?.carbohydrateCount} type='Glucides' />
-                <RightStats icon={LipidIcon} grData={userData?.lipidCount} type='Lipides' />
+                <RightStats icon={CaloriesIcon} grData={mainInformation?.calorieCount} type='Calories' />
+                <RightStats icon={CarbsIcon} grData={mainInformation?.proteinCount} type='Proteines' />
+                <RightStats icon={ProteinIcon} grData={mainInformation?.carbohydrateCount} type='Glucides' />
+                <RightStats icon={LipidIcon} grData={mainInformation?.lipidCount} type='Lipides' />
             </div>
         </div>
     )

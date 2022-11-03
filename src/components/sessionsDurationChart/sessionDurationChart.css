@@ -1,0 +1,25 @@
+.sessionStatsDuration
+{
+    position: relative;
+    background-color: red;
+    border-radius: 5px;
+}
+.sessionStatsDuration .chartTitle {
+    position: absolute;
+    width: 70%;
+    z-index: 2;
+    top: 20px;
+    right: 0;
+    left: 20px;
+    bottom: 100%;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: Roboto;
+  }
+
+.sessionStatsDuration .recharts-responsive-container .recharts-wrapper {
+    height: 258px;
+}
+.sessionStatsDuration .recharts-responsive-container .recharts-wrapper .recharts-surface
+{
+    height: 258px;
+}

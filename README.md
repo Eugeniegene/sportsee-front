@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# SportSee - EugenieGene
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Projet 12 - Développez un tableau de bord d'analytics avec React
 
-## Available Scripts
+## Technologies used
 
-In the project directory, you can run:
+- React v.18
+- React Router
+- CSS 3 
 
-### `npm start`
+## How to install ? 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Prequisites 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- npm 8.19.2
+- NoneJs 18.11.0
+- Code editor
 
-### `npm test`
+### Installing and lauching Back-End files 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Clone the repository of SportSee Back-End:
+```bash
+git clone https://github.com/Eugeniegene/sportSee-backend-P12.git
+``` 
+When opening the back-end repository :
+```bash
+npm install
+```
+Launch back-end on port 3000 :
+```bash
+npm run start
+```
+## Available Endpoints
 
-### `npm run build`
+This project contains four endpoints available for you to use.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- http://localhost:3000/user/${userId} - fetches all informations about a user : user id, user information (first name, last name and age), day's score (todayScore) and key data (calorie, macronutrient, etc.).
+- http://localhost:3000/user/${userId}/activity - fetches a user's activity day by day with kilograms and calories.
+- http://localhost:3000/user/${userId}/average-sessions - fetches the average sessions of a user per day : day 1 : Monday. 
+- http://localhost:3000/user/${userId}/performance - fetches a user's performance (energy, endurance, etc.).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+For the moment, only users 18 and 12 are mocked. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Examples of queries that are available to use with these two id numbers : 
 
-### `npm run eject`
+- http://localhost:3000/user/12/performance - Retrieves the performance of the user with id 12
+- http://localhost:3000/user/18 - Retrieves user 18's main information.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Installing and launching Front-end
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Clone the repository of SportSee Front-End:
+```bash
+git clone https://github.com/Eugeniegene/sportsee-front.git
+```
+Then, inside the repository, install dependencies:
+```bash
+npm install
+```
+Launch Front-End on port 3001:
+```bash
+npm start
+```
+Front-End is now rendered at URL http://localhost:3001

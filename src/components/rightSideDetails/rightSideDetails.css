@@ -1,18 +1,18 @@
 .rightUserStats
 {
     position: absolute;
-    margin-top: 20px;
+    margin-top: 15px;
     font-family: Roboto;
     left: 120%;
     right: 0%;
-    top: 25%;
+    top: 17%;
 }
 .sideStats
 {
     display: flex;
     background: #FBFBFB;
-    width: 258px;
-    height: 125px;
+    width: 300px;
+    height: 150px;
     align-items: center;
     border-radius: 5px;
     margin-bottom: 30px;

@@ -1,14 +1,18 @@
+body
+{
+    overflow: hidden;
+}
 .WelcomePage 
 {
     position: absolute;
-    margin-left: 230px;
-    margin-top: 15px;
+    margin-left: 250px;
     font-family: Roboto;
+    margin-top: -5px;
 }
 
 .greeting
 {
-    margin-bottom: 35px;
+    margin-bottom: 28px;
 }
 .greeting h1
 {

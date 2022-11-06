@@ -1,5 +1,10 @@
 import "./customLegend.css"
 
+/**
+ * Creates a legend to show a detailed score value of the user based on the payload
+ * @component
+ * @payload 
+ */
 const CustomScoreData = (payload) => {
     return (
       <div className='custom-legend-score'>

@@ -3,6 +3,7 @@
     font-family: Roboto;
     font-weight: 500;
     font-size: 23px;
+    margin-bottom: 10px;
 }
 
 .custom-legend-score .custom-legend-score-objective
@@ -12,4 +13,5 @@
     color: #74798C;
     width: 50%;
     margin-left: 25%;
+    margin-top: 0px;
 }

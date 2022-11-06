@@ -11,15 +11,26 @@ import RightStats from "../components/rightSideDetails/rightSideDetails.js"
 import SessionStats from "../components/sessionsDurationChart/sessionDurationChart.js"
 import PerformanceRadar from "../components/performanceValueRadar/performanceValueRadar.js"
 import UserScoreStats from "../components/scoreChart/scoreChart.js"
+import ErrorPage from "../components/errorPage/errorPage.js"
 
-import { fetchMainInformation, fetchMainUserInformation } from "../Api-Data/userData-Api.js"
+import { fetchMainInformation } from "../Api-Data/userData-Api.js"
 
 import "./Dashboard.css"
+
+/**
+ * Generates a dashboard page which contains all hooks to charts 
+ * - Daily Activity chart (weekly overview on weight and calories)
+ * - Session duration chart (overview on session durations)
+ * - Performance chart (overview on user preferences regarding activities)
+ * - Score chart (fetched from the general Api on the userScore)
+ * - Right side detailed bloc (with several overall details)
+ * NB : 'todayScore' is used for user 12, whereas 'score' is used for user 18 (see backend)
+ * @component
+ */
 
 const Dashboard = () => {
 
     const [mainInformation, setMainInformation] = useState([])
-    const [mainUserinformation, setmainUserInformation] = useState([])
     let isConnected = false
   
     useEffect(() => {
@@ -29,20 +40,19 @@ const Dashboard = () => {
     async function fetchUserData () {
       const neededData = await fetchMainInformation()
       setMainInformation(neededData)
-      const userData = await fetchMainUserInformation()
-      setmainUserInformation(userData)
     }
   
-    if (mainUserinformation?.firstName !== undefined) {
+    if (mainInformation?.userInfos?.firstName !== undefined) {
         isConnected = true
     } else {
         isConnected = false
     }
 
     return (
+        isConnected ? (
         <div className="WelcomePage">
             <div className="greeting">
-                <h1>Bonjour <span className='nom'> {mainUserinformation?.firstName}</span></h1>
+                <h1>Bonjour <span className='nom'> {mainInformation?.userInfos?.firstName}</span></h1>
                 <span>Félicitations ! Vous avez explosé vos objectifs hier 👏</span>
             </div>
             <div className="daily_stats_chart">
@@ -51,15 +61,17 @@ const Dashboard = () => {
             <div className="three_charts_block">
                 <SessionStats />
                 <PerformanceRadar />
-                <UserScoreStats />
+                <UserScoreStats todayScore={mainInformation.todayScore  || mainInformation.score }/>
             </div>
             <div className="rightUserStats">
-                <RightStats icon={CaloriesIcon} grData={mainInformation?.calorieCount} type='Calories' />
-                <RightStats icon={CarbsIcon} grData={mainInformation?.proteinCount} type='Proteines' />
-                <RightStats icon={ProteinIcon} grData={mainInformation?.carbohydrateCount} type='Glucides' />
-                <RightStats icon={LipidIcon} grData={mainInformation?.lipidCount} type='Lipides' />
+                <RightStats icon={CaloriesIcon} grData={mainInformation?.keyData?.calorieCount} type='Calories' />
+                <RightStats icon={CarbsIcon} grData={mainInformation?.keyData?.proteinCount} type='Proteines' />
+                <RightStats icon={ProteinIcon} grData={mainInformation?.keyData?.carbohydrateCount} type='Glucides' />
+                <RightStats icon={LipidIcon} grData={mainInformation?.keyData?.lipidCount} type='Lipides' />
             </div>
         </div>
+        ) : 
+        (<ErrorPage />)
     )
   }
 

@@ -1,32 +1,29 @@
 import React from 'react'
 
-import { RadialBar, RadialBarChart, ResponsiveContainer,Legend } from 'recharts'
-
-import { useState, useEffect } from 'react'
-
-import {fetchUserScoreById} from "../../Api-Data/userData-Api"
+import { RadialBar, RadialBarChart, ResponsiveContainer,Legend, PolarAngleAxis } from 'recharts'
 
 import CustomScoreData from "../customLegend/customLegend.js"
 
 import "./scoreChart.css"
 
-const UserScoreStats = () => {
+/**
+ * Creates the chart which allows the user to see his progression percentage regarding 
+ * their initial objective. 
+ * @component
+ */
+const UserScoreStats = ({todayScore}) => {
     
-    const [userScore, setUserScore] = useState([])
-
-        useEffect(() => {
-        fetchUserUserScore()
-        }, [])
-
-        async function fetchUserUserScore () {
-            const userData = await fetchUserScoreById()
-            setUserScore(userData)
-    }
+    const userScore = [
+        {
+            todayScore: todayScore * 100
+        }
+    ]
     return (
         <div className="userScoreChart">
             <span className='userTitle'> Score</span>
             <ResponsiveContainer width='100%' height='100%' aspect={1.2}>
                 <RadialBarChart startAngle={140} endAngle={500} cx='50%' cy='50%' innerRadius={70} barSize={10} outerRadius={120} data={userScore} fill="white">
+                    <PolarAngleAxis type='number' domain={[0,100]} dataKey={'todayScore'} angleAxisId={0} tick={false}/>
                     <RadialBar cornerRadius='50%' dataKey='todayScore' fill='#E60000' />
                     <Legend content={<CustomScoreData />} />
                 </RadialBarChart>

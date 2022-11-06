@@ -1,0 +1,21 @@
+.errorPage
+{
+    position: absolute;
+    text-align: center;
+    left : 25%;
+    right: 25%;
+    top: 25%;
+    font-family: Roboto;
+}
+
+.errorPage h1
+{
+    color: red;
+    font-size: 100px;
+    font-weight: 500;
+}
+
+.errorPage span
+{
+    font-size: 50px;
+}

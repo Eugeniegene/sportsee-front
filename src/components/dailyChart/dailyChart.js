@@ -7,22 +7,29 @@ import {fetchDailyActivityById} from "../../Api-Data/userData-Api"
 
 import "./dailyChart.css"
 
+/**
+ * This function will render the Daily Chart. On which can be found :
+ * - kilogram data, - calories data.
+ * This chart is a Barchart that allows the user to have an overlook on the last seven days.
+ * A custom tooltip is also added, but initially created in another component file.
+ * @component
+ */
+
 const DailyChart = () => {
     
+  const [activity, setActivity] = useState([])
 
-    const [activity, setActivity] = useState([])
-
-    useEffect(() => {
-      fetchActivityUser()
-    }, [])
+  useEffect(() => {
+    fetchActivityUser()
+  }, [])
   
-    async function fetchActivityUser () {
-      const info = await fetchDailyActivityById()
-      setActivity(info)
-    }
+  async function fetchActivityUser () {
+    const info = await fetchDailyActivityById()
+    setActivity(info)
+  }
 
     return (
-        <div className="DailyChart-container">
+      <div className="DailyChart-container">
             <span className="chart-title">Activité quotidienne</span>
             <div className="userDataChart">
                 <div className="weight-block">
@@ -33,10 +40,9 @@ const DailyChart = () => {
                     <i style={{color: "red", marginRight:"10px"}} className="fa-solid fa-circle"></i>
                     <span className="cal-data">Calories brûlées (kCal)</span>
                 </div>
-                
             </div>
             <ResponsiveContainer width="100%" height="100%"aspect={3}>
-                <BarChart width='50%' height='50%' data={activity} >
+              <BarChart width='50%' height='50%' data={activity} >
                 <CartesianGrid strokeDasharray='3 3' vertical={false} />
                 <XAxis dataKey='day' tickLine={false} axisLine={false} />
                 <XAxis dataKey='calories' type='number' tickLine={false} axisLine={false} />
@@ -45,9 +51,9 @@ const DailyChart = () => {
                 <YAxis dataKey='calories' type='number' yAxisId='calorie' hide />
                 <Bar name='Poids (kg)' dataKey='kilogram' radius={[10, 10, 0, 0]} barSize={7} fill='#282D30' />
                 <Bar name='Calories brûlées (kCal)' dataKey='calories' radius={[10, 10, 0, 0]} barSize={7} yAxisId='calorie' fill='#E60000' />
-            </BarChart>
+              </BarChart>
             </ResponsiveContainer>
-            </div>
+      </div>
     )
   }
 

@@ -1,8 +1,13 @@
 import React from "react"
 
 import "./rightSideDetails.css"
-const RightStats = ({ icon, grData, type }) => {
 
+/**
+ * Generates the data that will be displayed in the dashboard file :
+ * - Caloriesd intake, carbs, lipids and protein.
+ * @component
+ */
+const RightStats = ({ icon, grData, type }) => {
     return (
         <div className="sideStats">
             <div className="userIcons">
@@ -16,6 +21,5 @@ const RightStats = ({ icon, grData, type }) => {
             </div>
         </div>
     )
-  }
-
+}
 export default RightStats

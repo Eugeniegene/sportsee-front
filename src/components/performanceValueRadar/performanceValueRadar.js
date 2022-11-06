@@ -9,7 +9,7 @@ import "./performanceValueRadar.css"
 
 /**
  * Creates the performance radar based on the users' general sports practice. 
- * @component
+ * @component used in Dashboard
  */
 
 const PerformanceRadar = () => {

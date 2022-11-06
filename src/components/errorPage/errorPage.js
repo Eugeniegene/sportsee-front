@@ -1,5 +1,10 @@
 import "./errorPage.css"
 
+/**
+ * This error block will only appear if a user can not be found
+ * current users : id=12 & id=18
+ * @component used in Dashboard in case of a non-defined user
+ */
 const ErrorPage = () => {
     return (
       <div className='errorPage'>

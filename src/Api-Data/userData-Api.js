@@ -1,3 +1,4 @@
+//rendering week-days
 const weekDaySessions = {
   1: 'L',
   2: 'M',
@@ -8,6 +9,7 @@ const weekDaySessions = {
   7: 'D'
 }
 
+//rendering all activities 
 const allActivities = {
   1: "Cardio",
   2: "Energie",
@@ -17,6 +19,7 @@ const allActivities = {
   6: "Intensité",
 }
 
+//initialising a link and an id
 const [webLink] = window.location.href.split('?')
 const id = parseInt(webLink.split('/')[4]) || 12
 
@@ -67,7 +70,11 @@ async function fetchAveragePerformanceInformation () {
   }
 }
 
-//the following function will fetch any users daily activity on the main chart
+//FOLLOWING FUNCTIONS WILL BE CREATING A FORMAT TO DISPLAY TO THE USER 
+
+/**the following function will fetch any users daily activity on the main chart
+ * @returns Array[] - Returns the daily activity list which contains a date, kilograms and calories
+ */
 async function fetchDailyActivityById() {
   const  activity  = await fetchActivityInformation()
   const userDailyActivity = []
@@ -86,7 +93,9 @@ async function fetchDailyActivityById() {
       return userDailyActivity
 }
 
-// the following function will fetch user's sessions
+/** the following function will fetch user's sessions
+ * @returns Array[] - Returns the daily activity list which contains the @weekDaySessions and session length
+ */
 async function fetchSessionsId() {
   const  data  = await fetchAverageSessionInformation()
   const userWeeklySessions = []
@@ -101,7 +110,9 @@ async function fetchSessionsId() {
   return userWeeklySessions
 }
 
-//the following function will fetch any users performance score on the radar chart 
+/** the following function will fetch any users performance score on the radar chart 
+ *  @returns Array[] - Returns the daily activity list which contains the @allActivies with kinds
+ */
 async function fetchUserPerformanceById() {
   const performance  = await fetchAveragePerformanceInformation()
   const userPerformanceData = []

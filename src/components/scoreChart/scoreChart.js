@@ -1,5 +1,7 @@
 import React from 'react'
 
+import PropTypes from "prop-types";
+
 import { RadialBar, RadialBarChart, ResponsiveContainer,Legend, PolarAngleAxis } from 'recharts'
 
 import CustomScoreData from "../customLegend/customLegend.js"
@@ -9,7 +11,8 @@ import "./scoreChart.css"
 /**
  * Creates the chart which allows the user to see his progression percentage regarding 
  * their initial objective. 
- * @component
+ * @param {number} data User's displayed score
+ * @component used in Dashboard
  */
 const UserScoreStats = ({todayScore}) => {
     
@@ -31,4 +34,9 @@ const UserScoreStats = ({todayScore}) => {
         </div>
     )
   }
+
+  UserScoreStats.propTypes = {
+    todayScore: PropTypes.number.isRequired,
+  }
+
   export default UserScoreStats

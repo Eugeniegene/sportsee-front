@@ -1,11 +1,16 @@
 import React from "react"
 
+import PropTypes from "prop-types";
+
 import "./rightSideDetails.css"
 
 /**
  * Generates the data that will be displayed in the dashboard file :
- * - Caloriesd intake, carbs, lipids and protein.
- * @component
+ * @component used in Dashboard
+ * @param {String} icon gets the specific image for a card
+ * @param {Number} grData gets the total data for a cart 
+ * @param {String} type gets the type of nutrient 
+ * @returns -returns a React component
  */
 const RightStats = ({ icon, grData, type }) => {
     return (
@@ -21,5 +26,11 @@ const RightStats = ({ icon, grData, type }) => {
             </div>
         </div>
     )
+}
+
+RightStats.propTypes = {
+    icon: PropTypes.string.isRequired,
+    grData: PropTypes.number.isRequired,
+    type: PropTypes.string.isRequired,
 }
 export default RightStats

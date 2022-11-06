@@ -1,9 +1,11 @@
+import PropTypes from 'prop-types'
+
 import "./customLegend.css"
 
 /**
  * Creates a legend to show a detailed score value of the user based on the payload
- * @component
- * @payload 
+ * @component used in scoreChart
+ * @param payload datas selected to be shown as a number
  */
 const CustomScoreData = (payload) => {
     return (
@@ -15,4 +17,9 @@ const CustomScoreData = (payload) => {
       </div>
     )
   }
+
+  CustomScoreData.propTypes = {
+    payload: PropTypes.array
+  }
+  
 export default CustomScoreData

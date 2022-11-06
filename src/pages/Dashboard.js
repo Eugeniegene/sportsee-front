@@ -19,13 +19,10 @@ import "./Dashboard.css"
 
 /**
  * Generates a dashboard page which contains all hooks to charts 
- * - Daily Activity chart (weekly overview on weight and calories)
- * - Session duration chart (overview on session durations)
- * - Performance chart (overview on user preferences regarding activities)
- * - Score chart (fetched from the general Api on the userScore)
- * - Right side detailed bloc (with several overall details)
  * NB : 'todayScore' is used for user 12, whereas 'score' is used for user 18 (see backend)
- * @component
+ * @component used in index.js
+ * @param {Array} returns global data about a specific user = id and UserInfos
+ * @param {String} returns UserInfo data : FirstName, LastName and Age
  */
 
 const Dashboard = () => {

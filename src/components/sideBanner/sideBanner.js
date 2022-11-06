@@ -10,7 +10,8 @@ import SwimmingIcon from "../../assets/swimming-icon.png"
 /**
  * Creates the side banner by importing icons straight from assets files 
  * along with a copyright disclaimer
- * @component
+ * @component used in Dashboard file
+ * @returns - returns a React component 
  */
 
 const SideBanner = () => {

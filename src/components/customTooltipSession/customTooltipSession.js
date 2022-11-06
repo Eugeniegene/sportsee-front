@@ -1,9 +1,12 @@
+import PropTypes from 'prop-types'
+
 import "./customTooltipSession.css"
 
 /**
  * Creates a tooltip which shows the duration of a session via payload.
- * @component
- * @payload 
+ * @component used in sessionDurationChart
+ * @param active only true if a box appears
+ * @param payload datas selected to be shown
  */
 
 const CustomTooltipSession = ({ active, payload }) => {
@@ -15,6 +18,11 @@ const CustomTooltipSession = ({ active, payload }) => {
         )
       }
     return null
+}
+
+CustomTooltipSession.propTypes = {
+  active: PropTypes.bool,
+  payload: PropTypes.array
 }
 
 export default CustomTooltipSession

@@ -16,14 +16,13 @@ import "./dailyChart.css"
  */
 
 const DailyChart = () => {
-    
   const [activity, setActivity] = useState([])
 
   useEffect(() => {
     fetchActivityUser()
   }, [])
   
-  async function fetchActivityUser () {
+  async function fetchActivityUser (userId) {
     const info = await fetchDailyActivityById()
     setActivity(info)
   }
@@ -47,8 +46,8 @@ const DailyChart = () => {
                 <XAxis dataKey='day' tickLine={false} axisLine={false} />
                 <XAxis dataKey='calories' type='number' tickLine={false} axisLine={false} />
                 <YAxis dataKey='kilogram' type='number' tickLine={false} orientation='right' axisLine={false} domain={['dataMin - 1', 'dataMax + 1']} />
-                <Tooltip content={<CustomTooltip />} offset={30} />{' '}
-                <YAxis dataKey='calories' type='number' yAxisId='calorie' hide />
+                <YAxis dataKey='calories' type='number' yAxisId='calorie' hide={true} domain={['dataMin - 100', 'dataMax + 100']} />
+                <Tooltip content={<CustomTooltip />} offset={30} />
                 <Bar name='Poids (kg)' dataKey='kilogram' radius={[10, 10, 0, 0]} barSize={7} fill='#282D30' />
                 <Bar name='Calories brûlées (kCal)' dataKey='calories' radius={[10, 10, 0, 0]} barSize={7} yAxisId='calorie' fill='#E60000' />
               </BarChart>
@@ -56,5 +55,5 @@ const DailyChart = () => {
       </div>
     )
   }
-
+  
 export default DailyChart

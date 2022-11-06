@@ -12,7 +12,7 @@ import "./sessionDurationChart.css"
 /**
  * This chart will initialise a the duration of a sport session on the average
  * A custom tooltip is also added, but initially created in another component file.
- * @component
+ * @component used in Dashboard
  */
 
 const SessionStats = () => {

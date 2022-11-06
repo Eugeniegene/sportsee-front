@@ -1,5 +1,5 @@
 import React from "react"
-import { NavLink, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 import "./header.css"
 
@@ -14,34 +14,34 @@ import SportSeelogo from "../../assets/sportsee-logo.png"
 const Header = () => {
     return (
       <header>
-        <Link to="/">
+        <figure>
           <img className="SportseeLogo" src={SportSeelogo} alt="SportSee_logo" />
-        </Link>
+        </figure>
         <nav className="main-nav">
           <ul>
             <li>
-              <NavLink
-                className="Homepage" exact to="/user/:userId">
+              <Link
+                className="Homepage" to="/user/:userId">
                 Accueil
-              </NavLink>
+              </Link>
             </li>
             <li>
-              <NavLink
+              <Link
                 className="Profil" to="/user/:userId">
                 Profil
-              </NavLink>
+              </Link>
             </li>
             <li>
-              <NavLink
+              <Link
                 className="Settings" to="/user/:userId">
                 Réglages
-              </NavLink>
+              </Link>
             </li>
             <li>
-              <NavLink
+              <Link
                 className="Community" to="/user/:userId">
                 Communauté
-              </NavLink>
+              </Link>
             </li>
           </ul>
         </nav>

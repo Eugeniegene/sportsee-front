@@ -1,9 +1,8 @@
-import React from 'react';
+import React from 'react'
+
+import PropTypes from 'prop-types';
 
 import { ResponsiveContainer, PolarAngleAxis, PolarGrid, Radar, RadarChart } from 'recharts'
-import { useState, useEffect } from 'react'
-
-import {fetchUserPerformanceById} from "../../Api-Data/userData-Api"
 
 import "./performanceValueRadar.css"
 
@@ -12,18 +11,7 @@ import "./performanceValueRadar.css"
  * @component used in Dashboard
  */
 
-const PerformanceRadar = () => {
-
-  const [userPerformance, setUserPerformance] = useState([])
-
-    useEffect(() => {
-      fetchUserPerformance()
-    }, [])
-
-    async function fetchUserPerformance () {
-      const userData = await fetchUserPerformanceById()
-      setUserPerformance(userData)
-    }
+const PerformanceRadar = ({userPerformance}) => {
 
     return (
         <div className='performanceRadar'>
@@ -37,4 +25,9 @@ const PerformanceRadar = () => {
       </div>
     )
   }
+
+  PerformanceRadar.propTypes = {
+    userPerformance : PropTypes.array.isRequired
+   }
+
   export default PerformanceRadar

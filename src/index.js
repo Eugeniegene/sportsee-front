@@ -15,7 +15,7 @@ const rootElement = document.getElementById('root')
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/user/12" element={<Dashboard />}/>
+        <Route path="/user/:userId" element={<Dashboard />}/>
       </Routes>
       <SideBannerContainer />
     </BrowserRouter>

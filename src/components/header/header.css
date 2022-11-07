@@ -35,10 +35,13 @@ header .main-nav
     display: flex;
     width: 90%;
     text-decoration: none;
+    color: white;
+    list-style-type: none;
 }
 
-.main-nav ul a 
+.main-nav ul li
 {
     color: white;
     text-decoration: none;
+    cursor: pointer;
 }

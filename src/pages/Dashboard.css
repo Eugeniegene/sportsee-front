@@ -1,6 +1,7 @@
 body
 {
     overflow: hidden;
+    min-width: 1024px;
 }
 .WelcomePage 
 {
@@ -38,4 +39,53 @@ body
 .userScoreChart {
   width: 258px;
   height: 258px;
+}
+
+@media screen and (max-width:1612px) {
+    .WelcomePage{
+        width: 83%;
+        row-gap: 20px;
+        margin-left: 140px;
+    }
+
+    .DailyChart-container{
+        width: 65%;
+    }
+
+    .three_charts_block{
+        width:69%;
+    }
+
+    .sessionStatsDuration, .performanceRadar, .userScoreChart {
+        width: 200px;
+        height: 200px;
+    }
+
+    .rightUserStats{
+        left: 73%;
+    }
+
+    .rightUserStats .sideStats{
+        height: 125px;
+        margin-top: 20px;
+        width: 220px;
+    }
+    
+    .userScoreChart .userTitle
+    {
+        margin-top: 10px;
+    }
+    .userScoreChart .recharts-legend-wrapper {
+        left:17%!important;
+        height: 80px!important;
+        width: 80px!important;;
+    }
+
+    .custom-legend-score
+    .custom-legend-score-data{
+        margin-top: 2px;
+    }
+    .custom-legend-score .custom-legend-score-objective {
+        width: 60%;
+    }
 }

@@ -1,5 +1,6 @@
 import React from "react"
 import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom';
 
 import CaloriesIcon from "../assets/calories-icon.png"
 import CarbsIcon from "../assets/carbs-icon.png"
@@ -13,7 +14,7 @@ import PerformanceRadar from "../components/performanceValueRadar/performanceVal
 import UserScoreStats from "../components/scoreChart/scoreChart.js"
 import ErrorPage from "../components/errorPage/errorPage.js"
 
-import { fetchMainInformation } from "../Api-Data/userData-Api.js"
+import { fetchMainInformation, fetchDailyActivityById, fetchSessionsId, fetchUserPerformanceById } from "../services/userData-Api.js"
 
 import "./Dashboard.css"
 
@@ -26,18 +27,29 @@ import "./Dashboard.css"
  */
 
 const Dashboard = () => {
-
+    const { id } = useParams();
     const [mainInformation, setMainInformation] = useState([])
+
+    const [userPerformance, setUserPerformance] = useState({
+        "data": []
+    })
+
+    const [userActivity, setUserActivity] = useState({
+        "sessions": []
+    })
+
+    const [userAverageSessions, setUserAverageSessions] = useState({
+        "sessions": []
+    })
+
     let isConnected = false
   
     useEffect(() => {
-        fetchUserData()
-    }, [isConnected])
-  
-    async function fetchUserData () {
-      const neededData = await fetchMainInformation()
-      setMainInformation(neededData)
-    }
+        fetchMainInformation(id).then(data => setMainInformation(data));
+        fetchUserPerformanceById(id).then(data => setUserPerformance(data));
+        fetchDailyActivityById(id).then(data => setUserActivity(data));
+        fetchSessionsId(id).then(data => setUserAverageSessions(data));
+    }, [id]);
   
     if (mainInformation?.userInfos?.firstName !== undefined) {
         isConnected = true
@@ -53,11 +65,11 @@ const Dashboard = () => {
                 <span>Félicitations ! Vous avez explosé vos objectifs hier 👏</span>
             </div>
             <div className="daily_stats_chart">
-                <DailyChart />
+                <DailyChart userActivity={userActivity}/>
             </div>
             <div className="three_charts_block">
-                <SessionStats />
-                <PerformanceRadar />
+                <SessionStats userAverageSessions={userAverageSessions} />
+                <PerformanceRadar userPerformance={userPerformance}/>
                 <UserScoreStats todayScore={mainInformation.todayScore  || mainInformation.score }/>
             </div>
             <div className="rightUserStats">

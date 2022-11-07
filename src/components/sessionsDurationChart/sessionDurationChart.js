@@ -1,9 +1,8 @@
 import React from 'react';
 
 import { Line, LineChart, ResponsiveContainer, XAxis, YAxis, Tooltip } from "recharts"
-import { useState, useEffect } from 'react'
 
-import {fetchSessionsId} from "../../Api-Data/userData-Api"
+import PropTypes from "prop-types";
 
 import CustomTooltipSession from "../customTooltipSession/customTooltipSession.js"
 
@@ -15,23 +14,12 @@ import "./sessionDurationChart.css"
  * @component used in Dashboard
  */
 
-const SessionStats = () => {
-    
-    const [userValue, setUserValue] = useState([])
-
-        useEffect(() => {
-        fetchUserValue()
-        }, [])
-
-        async function fetchUserValue () {
-            const userData = await fetchSessionsId()
-            setUserValue(userData)
-        }
+const SessionStats = ({userAverageSessions}) => {
         return (
             <div className="sessionStatsDuration">
                 <span className='chartTitle'> Durée moyenne de vos sessions</span>
                 <ResponsiveContainer  width='100%' height='100%'aspect={1.2}>
-                    <LineChart width='100%' height='100%' data={userValue} margin={{ top: 5, right: 10, left: 10, bottom: 5 }}>
+                    <LineChart width='100%' height='100%' data={userAverageSessions} margin={{ top: 5, right: 10, left: 10, bottom: 5 }}>
                         <XAxis dataKey="day" stroke='white' opacity={0.5} tickLine={false} axisLine={false}/>
                         <YAxis padding={{ top: 50 }} stroke='white' opacity={0.5} tickLine={false} axisLine={false} hide/>
                         <Tooltip content={<CustomTooltipSession />} cursor={{stroke: "rgba(0, 0, 0, 0.1)", strokeWidth: 30 }}/>
@@ -40,5 +28,9 @@ const SessionStats = () => {
                 </ResponsiveContainer>
             </div>
         )
+    }
+
+    SessionStats.propTypes = {
+    userAverageSessions : PropTypes.array.isRequired
     }
   export default SessionStats

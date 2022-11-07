@@ -1,9 +1,8 @@
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts"
-import { useState, useEffect } from 'react'
+
+import PropTypes from 'prop-types'
 
 import CustomTooltip from "../customTooltip/customTooltip.js"
-
-import {fetchDailyActivityById} from "../../Api-Data/userData-Api"
 
 import "./dailyChart.css"
 
@@ -12,20 +11,10 @@ import "./dailyChart.css"
  * - kilogram data, - calories data.
  * This chart is a Barchart that allows the user to have an overlook on the last seven days.
  * A custom tooltip is also added, but initially created in another component file.
- * @component
+ * @component used in Dashboard
  */
 
-const DailyChart = () => {
-  const [activity, setActivity] = useState([])
-
-  useEffect(() => {
-    fetchActivityUser()
-  }, [])
-  
-  async function fetchActivityUser (userId) {
-    const info = await fetchDailyActivityById()
-    setActivity(info)
-  }
+const DailyChart = ({userActivity}) => {
 
     return (
       <div className="DailyChart-container">
@@ -41,9 +30,9 @@ const DailyChart = () => {
                 </div>
             </div>
             <ResponsiveContainer width="100%" height="100%"aspect={3}>
-              <BarChart width='50%' height='50%' data={activity} >
+              <BarChart width='50%' height='50%' data={userActivity} >
                 <CartesianGrid strokeDasharray='3 3' vertical={false} />
-                <XAxis dataKey='day' tickLine={false} axisLine={false} />
+                <XAxis dataKey='day'  type="category" tickLine={false} axisLine={false} />
                 <XAxis dataKey='calories' type='number' tickLine={false} axisLine={false} />
                 <YAxis dataKey='kilogram' type='number' tickLine={false} orientation='right' axisLine={false} domain={['dataMin - 1', 'dataMax + 1']} />
                 <YAxis dataKey='calories' type='number' yAxisId='calorie' hide={true} domain={['dataMin - 100', 'dataMax + 100']} />
@@ -55,5 +44,9 @@ const DailyChart = () => {
       </div>
     )
   }
-  
+
+  DailyChart.propTypes = {
+    userActivity : PropTypes.array.isRequired,
+}
+
 export default DailyChart

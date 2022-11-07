@@ -21,7 +21,7 @@ const allActivities = {
 
 //initialising a link and an id
 const [webLink] = window.location.href.split('?')
-const id = parseInt(webLink.split('/')[4]) || 12
+const id = parseInt(webLink.split('/')[4]) || 12 || 18
 
 //the two following functions will fetch general user data
 async function fetchMainInformation () {
@@ -80,15 +80,15 @@ async function fetchDailyActivityById() {
   const userDailyActivity = []
 
       for (let item of activity.sessions) {
-        const newDay = new Date(item.day)
-        newDay.getDay()
+       const [yyyy, mm, dd] = item.day.split("-");
 
         userDailyActivity.push({
-          day: `${newDay.getDate()}`,
+          day: `${dd}/${mm}`,
           kilogram: item.kilogram,
           calories: item.calories,
         })
       }
+      console.log(userDailyActivity)
 
       return userDailyActivity
 }

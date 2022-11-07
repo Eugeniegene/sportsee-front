@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "react-router-dom"
 
 import "./header.css"
 
@@ -7,7 +6,7 @@ import SportSeelogo from "../../assets/sportsee-logo.png"
 
 /**
  * This function will render the header.
- * No link is usable. Clicking on one of the links will not change the page.
+ * No link is usable. Clicking on one of the options will not change the page.
  * @component used in index.js
  */
 
@@ -19,29 +18,21 @@ const Header = () => {
         </figure>
         <nav className="main-nav">
           <ul>
-            <li>
-              <Link
-                className="Homepage" to="/user/:userId">
+            <li              
+                className="Homepage">
                 Accueil
-              </Link>
             </li>
-            <li>
-              <Link
-                className="Profil" to="/user/:userId">
+            <li
+                className="Profil">
                 Profil
-              </Link>
             </li>
-            <li>
-              <Link
-                className="Settings" to="/user/:userId">
+            <li
+                className="Settings" >
                 Réglages
-              </Link>
             </li>
-            <li>
-              <Link
-                className="Community" to="/user/:userId">
+            <li
+                className="Community">
                 Communauté
-              </Link>
             </li>
           </ul>
         </nav>

@@ -15,7 +15,6 @@ import "./dailyChart.css"
  */
 
 const DailyChart = ({userActivity}) => {
-
     return (
       <div className="DailyChart-container">
             <span className="chart-title">Activité quotidienne</span>

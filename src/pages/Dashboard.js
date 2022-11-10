@@ -30,17 +30,11 @@ const Dashboard = () => {
     const { id } = useParams();
     const [mainInformation, setMainInformation] = useState([])
 
-    const [userPerformance, setUserPerformance] = useState({
-        "data": []
-    })
+    const [userPerformance, setUserPerformance] = useState([])
 
-    const [userActivity, setUserActivity] = useState({
-        "sessions": []
-    })
+    const [userActivity, setUserActivity] = useState([])
 
-    const [userAverageSessions, setUserAverageSessions] = useState({
-        "sessions": []
-    })
+    const [userAverageSessions, setUserAverageSessions] = useState([])
 
     let isConnected = false
   

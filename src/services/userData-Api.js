@@ -88,8 +88,6 @@ async function fetchDailyActivityById() {
           calories: item.calories,
         })
       }
-      console.log(userDailyActivity)
-
       return userDailyActivity
 }
 

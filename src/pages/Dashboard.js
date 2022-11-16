@@ -14,7 +14,7 @@ import PerformanceRadar from "../components/performanceValueRadar/performanceVal
 import UserScoreStats from "../components/scoreChart/scoreChart.js"
 import ErrorPage from "../components/errorPage/errorPage.js"
 
-import { fetchMainInformation, fetchDailyActivityById, fetchSessionsId, fetchUserPerformanceById } from "../services/userData-Api.js"
+import { fetchMainInformation, fetchActivityInformation, fetchAverageSessionInformation, fetchAveragePerformanceInformation } from "../services/userData-Api.js"
 
 import "./Dashboard.css"
 
@@ -40,9 +40,9 @@ const Dashboard = () => {
   
     useEffect(() => {
         fetchMainInformation(id).then(data => setMainInformation(data));
-        fetchUserPerformanceById(id).then(data => setUserPerformance(data));
-        fetchDailyActivityById(id).then(data => setUserActivity(data));
-        fetchSessionsId(id).then(data => setUserAverageSessions(data));
+        fetchAveragePerformanceInformation(id).then(data => setUserPerformance(data));
+        fetchActivityInformation(id).then(data => setUserActivity(data));
+        fetchAverageSessionInformation(id).then(data => setUserAverageSessions(data));
     }, [id]);
   
     if (mainInformation?.userInfos?.firstName !== undefined) {
@@ -63,7 +63,7 @@ const Dashboard = () => {
             </div>
             <div className="three_charts_block">
                 <SessionStats userAverageSessions={userAverageSessions} />
-                <PerformanceRadar userPerformance={userPerformance}/>
+                <PerformanceRadar userPerformance={userPerformance.data}/>
                 <UserScoreStats todayScore={mainInformation.todayScore  || mainInformation.score }/>
             </div>
             <div className="rightUserStats">

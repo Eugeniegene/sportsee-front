@@ -31,6 +31,11 @@ const SessionStats = ({userAverageSessions}) => {
     }
 
     SessionStats.propTypes = {
-    userAverageSessions : PropTypes.array.isRequired
-    }
+        userAverageSessions: PropTypes.arrayOf(
+            PropTypes.shape({
+                day: PropTypes.string,
+                sessionsLength: PropTypes.number,
+              })
+          ),
+        }
   export default SessionStats

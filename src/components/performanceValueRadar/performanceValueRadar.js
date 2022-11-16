@@ -27,7 +27,7 @@ const PerformanceRadar = ({userPerformance}) => {
   }
 
   PerformanceRadar.propTypes = {
-    userPerformance : PropTypes.array.isRequired
+    userPerformance : PropTypes.array
    }
 
   export default PerformanceRadar

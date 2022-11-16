@@ -45,7 +45,12 @@ const DailyChart = ({userActivity}) => {
   }
 
   DailyChart.propTypes = {
-    userActivity : PropTypes.array.isRequired,
-}
+    userActivity: PropTypes.arrayOf(
+      PropTypes.shape({
+        kilogram: PropTypes.number,
+        calories: PropTypes.number,
+      })
+    ),
+  };
 
 export default DailyChart

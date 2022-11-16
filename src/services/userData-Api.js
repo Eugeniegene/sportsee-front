@@ -1,3 +1,5 @@
+import { createPath } from "react-router-dom"
+
 //rendering week-days
 const weekDaySessions = {
   1: 'L',
@@ -7,16 +9,6 @@ const weekDaySessions = {
   5: 'V',
   6: 'S',
   7: 'D'
-}
-
-//rendering all activities 
-const allActivities = {
-  1: "Cardio",
-  2: "Energie",
-  3: "Endurance",
-  4: "Force",
-  5: "Vitesse",
-  6: "Intensité",
 }
 
 //initialising a link and an id
@@ -42,7 +34,8 @@ async function fetchActivityInformation () {
   try {
     response = await fetch(`http://localhost:3000/user/${id}/activity`)
     data = await response.json()
-    return data.data
+    const result = new FetchActivityData(data.data)
+    return result.data
   } catch (err) {
   }
 }
@@ -54,7 +47,8 @@ async function fetchAverageSessionInformation () {
   try {
     response = await fetch(`http://localhost:3000/user/${id}/average-sessions`)
     data = await response.json()
-    return data.data
+    const result = new FetchAverageSessionData(data.data)
+    return result.data
   } catch (err) {
   }
 }
@@ -65,7 +59,8 @@ async function fetchAveragePerformanceInformation () {
   try {
     response = await fetch(`http://localhost:3000/user/${id}/performance`)
     data = await response.json()
-    return data.data
+    const result = new FetchPerformanceData(data.data)
+    return result
   } catch (err) {
   }
 }
@@ -75,56 +70,82 @@ async function fetchAveragePerformanceInformation () {
 /**the following function will fetch any users daily activity on the main chart
  * @returns Array[] - Returns the daily activity list which contains a date, kilograms and calories
  */
-async function fetchDailyActivityById() {
-  const  activity  = await fetchActivityInformation()
-  const userDailyActivity = []
-
-      for (let item of activity.sessions) {
-       const [yyyy, mm, dd] = item.day.split("-");
-
-        userDailyActivity.push({
-          day: `${dd}/${mm}`,
-          kilogram: item.kilogram,
-          calories: item.calories,
-        })
-      }
-      return userDailyActivity
-}
 
 /** the following function will fetch user's sessions
  * @returns Array[] - Returns the daily activity list which contains the @weekDaySessions and session length
  */
-async function fetchSessionsId() {
-  const  data  = await fetchAverageSessionInformation()
-  const userWeeklySessions = []
 
-      for (let sess of data.sessions) {
-        userWeeklySessions.push({
-          day: weekDaySessions[sess.day],
-          sessionLength: sess.sessionLength
-        })
-      }
-
-  return userWeeklySessions
-}
 
 /** the following function will fetch any users performance score on the radar chart 
  *  @returns Array[] - Returns the daily activity list which contains the @allActivies with kinds
  */
-async function fetchUserPerformanceById() {
-  const performance  = await fetchAveragePerformanceInformation()
-  const userPerformanceData = []
 
-      for (let perf of performance.data) {
-        userPerformanceData.push({
-          value: perf.value,
-          kind: allActivities[perf.kind],
-        })
-      }
-      
-  return userPerformanceData
+ class FetchActivityData {
+  constructor(data) {
+    this.id = data.id
+    this.sessions = data.sessions 
+  }
+
+  get data(){
+    let data = []
+    for (let item of this.sessions) {
+      const [yyyy, mm, dd] = item.day.split("-");
+
+       data.push({
+         day: `${dd}/${mm}`,
+         kilogram: item.kilogram,
+         calories: item.calories,
+       })
+     }
+     return data
+    }
+  }
+
+class FetchAverageSessionData {
+  constructor(data) {
+    this.id = data.id
+    this.sessions = data.sessions
+    const weekDaySessions = {
+      1: 'L',
+      2: 'M',
+      3: 'M',
+      4: 'J',
+      5: 'V',
+      6: 'S',
+      7: 'D'
+    }  
+  }
+  get data (){
+    const userWeeklySessions = []
+    for (let sess of this.sessions) {
+
+      userWeeklySessions.push({
+        day:weekDaySessions[sess.day],
+        sessionLength: sess.sessionLength
+      })
+    }
+    return userWeeklySessions
+  }
+}
+
+class FetchPerformanceData {
+  constructor(data) {
+    const categories = {
+      1: "Cardio",
+      2: "Energie",
+      3: "Endurance",
+      4: "Force",
+      5: "Vitesse",
+      6: "Intensité",
+    };
+
+    for (const allActivities  in data.data) {
+      data.data[allActivities].kind = categories[parseInt(allActivities) + 1]
+    }
+
+    this.data = Object.values(data.data).reverse()
+  }
 }
 
 
-
-export { fetchMainInformation, fetchSessionsId, fetchDailyActivityById, fetchUserPerformanceById, fetchActivityInformation, fetchAverageSessionInformation,fetchAveragePerformanceInformation }
+export { fetchMainInformation, fetchActivityInformation, fetchAverageSessionInformation,fetchAveragePerformanceInformation }

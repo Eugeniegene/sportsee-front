@@ -67,17 +67,8 @@ async function fetchAveragePerformanceInformation () {
 
 //FOLLOWING FUNCTIONS WILL BE CREATING A FORMAT TO DISPLAY TO THE USER 
 
-/**the following function will fetch any users daily activity on the main chart
+/**the following class will fetch any users daily activity on the main chart
  * @returns Array[] - Returns the daily activity list which contains a date, kilograms and calories
- */
-
-/** the following function will fetch user's sessions
- * @returns Array[] - Returns the daily activity list which contains the @weekDaySessions and session length
- */
-
-
-/** the following function will fetch any users performance score on the radar chart 
- *  @returns Array[] - Returns the daily activity list which contains the @allActivies with kinds
  */
 
  class FetchActivityData {
@@ -100,8 +91,10 @@ async function fetchAveragePerformanceInformation () {
      return data
     }
   }
-
-class FetchAverageSessionData {
+/** the following function will fetch user's sessions
+ * @returns Array[] - Returns the daily activity list which contains the @weekDaySessions and session length
+ */
+ class FetchAverageSessionData {
   constructor(data) {
     this.id = data.id
     this.sessions = data.sessions
@@ -127,6 +120,11 @@ class FetchAverageSessionData {
     return userWeeklySessions
   }
 }
+
+/** the following function will fetch any users performance score on the radar chart 
+ *  @returns Array[] - Returns the daily activity list which contains all @categories with kinds
+ */
+
 
 class FetchPerformanceData {
   constructor(data) {
